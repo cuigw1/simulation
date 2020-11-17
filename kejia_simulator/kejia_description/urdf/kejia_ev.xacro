@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="kejia_ev" params="name parent xyz rpy meshes">
+
+    <!-- Ev -->
+    <joint name="${parent}_${name}_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="${rpy}"/>
+      <parent link="${parent}"/>
+      <child link="${name}"/>
+    </joint>
+    <link name="${name}">
+      <inertial>
+        <mass value="2.0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+      <visual name="${name}_visual">
+        <origin rpy="0 0 0" xyz="0     0       0.5"/>
+        <geometry>
+          <cylinder length="1.0" radius=".01"/>
+        </geometry>
+        <material name="black"/>
+      </visual>
+      <collision name="${name}_collision">
+        <origin rpy="0 0 0" xyz="0     0       0.5"/>
+        <geometry>
+          <cylinder length="1.0" radius=".01"/>
+        </geometry>
+      </collision>
+      <visual name="${name}_visual2">
+        <origin rpy="0 0 0" xyz="-0.08     0       0.5"/>
+        <geometry>
+          <cylinder length="1.0" radius=".01"/>
+        </geometry>
+        <material name="black"/>
+      </visual>
+      <collision name="${name}_collision2">
+        <origin rpy="0 0 0" xyz="-0.08     0       0.5"/>
+        <geometry>
+          <cylinder length="1.0" radius=".01"/>
+        </geometry>
+      </collision>
+      <visual name="${name}_visual3">
+        <origin rpy="0 0 0" xyz="-0.04   0      1.0"/>
+        <geometry>
+          <box size=".152 .09 .02"/>
+        </geometry>
+        <material name="black"/>
+      </visual>
+      <collision name="${name}_collision3">
+        <origin rpy="0 0 0" xyz="-0.04   0      1.0"/>
+        <geometry>
+          <box size=".152 .09 .02"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <gazebo reference="${name}">
+      <material value="Gazebo/Black"/>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>

@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="tea_table">
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <gravity>false</gravity>
+      <inertial>
+	<mass>20</mass>
+      </inertial>
+      <visual name="tea_table">
+	<geometry>
+	  <mesh>
+	    <uri>model://tea_table/meshes/tea_table.dae</uri>
+	  </mesh>
+	</geometry>
+      </visual>
+      <collision name="tea_table">
+	<geometry>
+	  <mesh>
+	    <uri>model://tea_table/meshes/tea_table.dae</uri>
+	  </mesh>
+	</geometry>
+      </collision>
+    </link>
+    <static>1</static>
+  </model>
+</sdf>

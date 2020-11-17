@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="human">
+    <static>false</static>
+    <link name="link">
+      <collision name="collision">
+        <pose>0 0 0.75 0 0 1.57</pose>
+        <geometry>
+          <box>
+            <size>0.62 0.24 1.50</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <pose>0 0 0 0 0 1.57</pose>
+        <geometry>
+          <mesh>
+            <uri>model://human/meshes/human.dae</uri>
+            <scale>0.30 0.30 0.30</scale>
+          </mesh>
+        </geometry>
+
+      </visual>
+    </link>
+  </model>
+</sdf>

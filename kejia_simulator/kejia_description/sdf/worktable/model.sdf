@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="worktable">
+    <static>false</static>
+    <link name="link">
+      <collision name="collision">
+<pose>-0.04 -0.08 0.355 0 0 0</pose>
+        <geometry>
+	<box><size>0.98 1.95 0.71</size></box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://worktable/meshes/worktable.dae</uri>
+<scale>0.8 0.8 0.8</scale>
+
+          </mesh>
+        </geometry>
+
+      </visual>
+    </link>
+  </model>
+</sdf>

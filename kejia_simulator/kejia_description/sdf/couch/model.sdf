@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="couch">
+    <static>false</static>
+    <link name="link">
+
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://couch/meshes/couch.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+	<collision name="box">
+	<pose>0 0.04 0.215 0 0 0</pose>
+	<geometry>
+	<box><size>2.1 1.02 0.43</size></box>
+	</geometry>
+	</collision>
+
+	<collision name="box_2">
+	<pose>0 0.39 0.42 0 0 0</pose>
+	<geometry>
+	<box><size>2.1 0.34 0.84</size></box>
+	</geometry>
+	</collision>
+
+	<collision name="coll_2">
+	<pose>0.965 0.0525 0.46 1.5708 0 0</pose>   
+	<geometry>
+          <cylinder>
+            <radius>0.155</radius>
+            <length>0.98</length>
+          </cylinder>
+        </geometry>
+	</collision>
+	<collision name="coll_3">
+	<pose>-0.965 0.0525 0.46 1.5708 0 0</pose>   
+	<geometry>
+          <cylinder>
+            <radius>0.155</radius>
+            <length>0.98</length>
+          </cylinder>
+        </geometry>
+	</collision>
+    </link>
+  </model>
+</sdf>

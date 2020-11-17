@@ -1,0 +1,28 @@
+<!---->
+<launch>
+  <arg name="xmin" default="-1.0"/>
+  <arg name="xmax" default="1.0"/>
+  <arg name="ymin" default="-1.0"/>
+  <arg name="ymax" default="1.0"/>
+  <arg name="delta" default="0.05"/>
+
+  <arg name="particles" default="30"/>
+
+  <arg name="laser_topic" default="scan"/>
+  <arg name="odom_frame" default="odom"/>
+  <arg name="map_frame" default="map"/>
+  <arg name="base_frame" default="base_link"/>
+
+  <node name="gmapping_node" pkg="gmapping" type="slam_gmapping" output="screen">
+    <param name="xmin" value="$(arg xmin)"/>
+    <param name="xmax" value="$(arg xmax)"/>
+    <param name="ymin" value="$(arg ymin)"/>
+    <param name="ymax" value="$(arg ymax)"/>
+    <param name="delta" value="$(arg delta)"/>
+    <param name="particles" value="$(arg particles)"/>
+    <param name="odom_frame" value="$(arg odom_frame)"/>
+    <param name="map_frame" value="$(arg map_frame)"/>
+    <param name="base_frame" value="$(arg base_frame)"/>
+    <remap from="scan" to="$(arg laser_topic)"/>
+  </node>
+</launch>

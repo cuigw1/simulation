@@ -1,0 +1,83 @@
+kejia:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  kejia_arm_controller:
+    type: position_controllers/JointTrajectoryController
+    joints:
+      - arm_base_arm_lr_joint
+      - arm_lr_arm_ud1_joint
+      - arm_ud1_arm_ud2_joint
+      - arm_ud2_arm_ud3_joint
+      - arm_ud3_arm_wrist_joint
+      - ev_support_joint
+    constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      arm_base_arm_lr_joint: { trajectory: 0.1, goal: 0.1 }
+      arm_lr_arm_ud1_joint: { trajectory: 0.1, goal: 0.1 }
+      arm_ud1_arm_ud2_joint: { trajectory: 0.1, goal: 0.1 }
+      arm_ud2_arm_ud3_joint: { trajectory: 0.1, goal: 0.1 }
+      arm_ud3_arm_wrist_joint: { trajectory: 0.1, goal: 0.1 }
+      ev_support_joint: { trajectory: 0.1, goal: 0.1 }
+    stop_trajectory_duration: 0.5
+    state_publish_rate: 25
+    action_monitor_rate: 10
+
+  # Position Controllers ---------------------------------------
+  sz_position_controller:
+    type: position_controllers/JointPositionController
+    joint: arm_base_arm_lr_joint
+
+  sy1_position_controller:
+    type: position_controllers/JointPositionController
+    joint: arm_lr_arm_ud1_joint
+
+  sy2_position_controller:
+    type: position_controllers/JointPositionController
+    joint: arm_ud1_arm_ud2_joint
+
+  sy3_position_controller:
+    type: position_controllers/JointPositionController
+    joint: arm_ud2_arm_ud3_joint
+
+  wr_position_controller:
+    type: position_controllers/JointPositionController
+    joint: arm_ud3_arm_wrist_joint
+
+  lf_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_wrist_gripper_left_joint
+    pid: { p: 100.0, i: 0.01, d: 10.0 }
+
+  rf_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_wrist_gripper_right_joint
+    pid: { p: 100.0, i: 0.01, d: 10.0 }
+
+  ev_position_controller:
+    type: position_controllers/JointPositionController
+    joint: ev_support_joint
+
+  pan_position_controller:
+    type: position_controllers/JointPositionController
+    joint: neck_pan_joint
+
+  tilt_position_controller:
+    joint: neck_tilt_joint
+    type: position_controllers/JointPositionController
+  # gazebo_ros_control/pid_gains:
+  #   arm_lr_arm_ud1_joint: {p: 10.0, i: 0.01, d: 1.0}
+  #   arm_base_arm_lr_joint: {p: 10.0, i: 0.01, d: 1.0}
+  #   arm_ud1_arm_ud2_joint: {p: 10.0, i: 0.01, d: 1.0}
+  #   arm_ud2_arm_ud3_joint: {p: 10.0, i: 0.01, d: 1.0}
+  #   arm_ud3_arm_wrist_joint: {p: 10.0, i: 0.01, d: 1.0}
+  #   ev_support_joint: {p: 10.0, i: 0.01, d: 1.0}
+  #   front_left_wheel_joint: {p: 10.0, i: 0.01, d: 1.0}
+  #   front_right_wheel_joint: {p: 10.0, i: 0.01, d: 1.0}
+  #   neck_pan_joint: {p: 10.0, i: 0.01, d: 1.0}
+  #   neck_tilt_joint: {p: 10.0, i: 0.01, d: 1.0}
+  #   arm_wrist_gripper_left_joint: {p: 10.0, i: 0.01, d: 1.0}
+  #   arm_wrist_gripper_right_joint: {p: 10.0, i: 0.01, d: 1.0}

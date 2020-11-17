@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="tv_stand">
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <gravity>false</gravity>
+      <inertial>
+	<mass>20</mass>
+      </inertial>
+      <visual name="visual">
+	<geometry>
+	  <mesh>
+	    <uri>model://tv/meshes/TVStand.dae</uri>
+	  </mesh>
+	</geometry>
+      </visual>
+      <collision name="tv_stand">
+	<geometry>
+	  <mesh>
+	    <uri>model://tv/meshes/TVStand.dae</uri>
+	  </mesh>
+	</geometry>
+      </collision>
+    </link>
+    <static>1</static>
+  </model>
+</sdf>

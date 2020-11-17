@@ -1,0 +1,21 @@
+<launch>
+  <arg name="debug" default="false"/>
+  <arg if="$(arg debug)" name="launch_prefix" value="xterm -rv -e gdb -ex run -args"/>
+  <arg unless="$(arg debug)" name="launch_prefix" value=""/>
+
+  <node name="gslam" pkg="we_gslam" type="we_gslam" output ="screen" launch-prefix="$(arg launch_prefix)">
+    <rosparam file="$(find we_gslam)/cfg/gslam_F2.yaml" command="load" />
+    
+    <param name="input_map" value="$(find kejia_mapping)/map/sim.map"/>
+    <param name="entity_path" value="$(find kejia_mapping)/map/sim.txt"/>
+     
+    <param name="output_map" value="$(find we_gslam)/datas/output-map.map"/>
+    
+    <param name="gpsr_path" value="$(find we_gslam)/datas/gpsr.txt"/>
+
+    <param name="log_path" value="$(find we_gslam)/log/gslam.log"/>
+    <param name="init_pose_path" value="$(find we_gslam)/cfg/init_pose.yaml"/>
+  </node>
+  <node pkg="rviz" type="rviz" name="rviz_we_nav" args="-d $(find kejia_nav)/cfg/we_gslam.rviz"/>
+</launch>
+

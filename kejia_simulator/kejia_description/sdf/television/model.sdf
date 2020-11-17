@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="television">
+    <static>false</static>
+    <link name="link">
+   <collision name="collision">
+<pose>0 0 0.9 0 0 0</pose>
+        <geometry>
+	<box><size>1.76 0.1 0.8</size></box>
+        </geometry>
+</collision>
+      <collision name="collision1">
+<pose>0 0 0.0335 0 0 0</pose>
+        <geometry>
+	<box><size>1.76 0.55 0.067</size></box>
+        </geometry>
+      </collision>
+      <collision name="collision2">
+<pose>0 0 0.5135 0 0 0</pose>
+        <geometry>
+	<box><size>1.80 0.55 0.066</size></box>
+        </geometry>
+      </collision>
+      <collision name="collision3">
+<pose>0.825 -0.008 0.22 0 0 0</pose>
+        <geometry>
+	<box><size>0.06 0.47 0.44</size></box>
+        </geometry>
+      </collision>
+      <collision name="collision4">
+<pose>-0.833 -0.008 0.22 0 0 0</pose>
+        <geometry>
+	<box><size>0.06 0.47 0.44</size></box>
+        </geometry>
+      </collision>
+      <collision name="collision5">
+<pose> 0 0.208 0.22 0 0 0</pose>
+        <geometry>
+	<box><size>1.6 0.05 0.44</size></box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+<pose>0.24 0.22 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://television/meshes/television.dae</uri>
+<scale>0.55 0.55 0.55</scale>
+          </mesh>
+        </geometry>
+      </visual>
+<!-->
+      <visual name="visual1">
+<pose>0 0 0.9 0 0 0</pose>
+        <geometry>
+	<box><size>1.76 0.1 0.8</size></box>
+        </geometry>
+      </visual>
+      <visual name="visual2">
+<pose>0 0 0.0335 0 0 0</pose>
+        <geometry>
+	<box><size>1.76 0.55 0.067</size></box>
+        </geometry>
+      </visual>
+      <visual name="visual3">
+<pose>0 0 0.5135 0 0 0</pose>
+        <geometry>
+	<box><size>1.80 0.55 0.066</size></box>
+        </geometry>
+      </visual>
+      <visual name="visual4">
+<pose>0.825 -0.008 0.22 0 0 0</pose>
+        <geometry>
+	<box><size>0.06 0.47 0.44</size></box>
+        </geometry>
+      </visual>
+      <visual name="visual5">
+<pose>-0.833 -0.008 0.22 0 0 0</pose>
+        <geometry>
+	<box><size>0.06 0.47 0.44</size></box>
+        </geometry>
+      </visual>
+      <visual name="visual6">
+<pose> 0 0.208 0.22 0 0 0</pose>
+        <geometry>
+	<box><size>1.6 0.05 0.44</size></box>
+        </geometry>
+      </visual>
+<-->
+    </link>
+  </model>
+</sdf>

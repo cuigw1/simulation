@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot
+  xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+
+  <xacro:macro name="back_wheel" params="name parent xyz rpy radius meshes">
+
+  <!-- Wheel -->
+  <joint name="${name}_wheel_joint" type="fixed">
+    <origin xyz="${xyz}" rpy="${rpy}"/>
+    <parent link="${parent}"/>
+    <child link="${name}_wheel"/>
+  </joint>
+  <link name="${name}_wheel">
+    <visual name="${name}_wheel_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="{name}_wheel_geometry">
+        <sphere radius="${radius}"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="${radius}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="5"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.4"/>
+    </inertial>
+  </link>
+  <gazebo reference="${name}_wheel">
+    <mu1 value="0"/>
+    <mu2 value="0"/>
+    <kp value="10000000.0"/>
+    <kd value="1.0"/>
+    <fdir1 value="1 0 0"/>
+    <material>Gazebo/Grey</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  </xacro:macro>
+
+</robot>

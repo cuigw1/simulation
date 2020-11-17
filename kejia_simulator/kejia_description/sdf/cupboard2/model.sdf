@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="cupboard2">
+    <static>false</static>
+    <link name="body">
+      <inertial>
+        <mass>50</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>0.7</izz>
+        </inertia>
+      </inertial>
+      <visual name="visual">
+        <pose>-0.0012 -0.005 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://cupboard2/meshes/cupboard_body.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="body_1">
+        <pose>0 0 0.126 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.1176 0.42545 0.252</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <collision name="body_2">
+        <pose>0.53462 0 1.0892183 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04445 0.42545 2.1784366</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <collision name="body_3">
+        <pose>-0.53462 0 1.0892183 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04445 0.42545 2.1784366</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <collision name="body_4">
+        <pose>0 0.204 1.0892183 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.1176 0.0217767 2.1784366</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <collision name="body_5">
+        <pose>0 0 0.5436 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.1176 0.42545 0.01905</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <collision name="body_6">
+        <pose>0 0 1.65 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.1176 0.42545 0.01905</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual_body_6">
+        <pose>0 0 1.65 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.1176 0.42545 0.01905</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://cupboard2/materials/scripts</uri>
+            <uri>model://cupboard2/materials/textures</uri>
+            <name>Cupboard/Diffuse</name>
+          </script>
+        </material>
+      </visual>
+
+      <collision name="body_7">
+        <pose>0 0 1.947 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.1176 0.42545 0.01905</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <collision name="body_8">
+        <pose>0 0 0.877 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.1176 0.42545 0.127</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <collision name="body_9">
+        <pose>0 0 2.1784366 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.1176 0.42545 0.07</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="left_small_door">
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <pose>0.2698750 -0.2039152 0.2538435 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://cupboard2/meshes/cupboard_small_door.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="collision">
+        <pose>0 0 0.2794 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.48895 0.01905 0.5588</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="right_small_door">
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <pose>-0.2698750 -0.2039152 0.2538435 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://cupboard2/meshes/cupboard_small_door.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="collision">
+        <pose>0 0 0.2794 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.48895 0.01905 0.5588</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- <link name="left_big_door">
+      <inertial>
+        <mass>2</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <pose>0.2568750 -0.2039152 0.9271 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://cupboard2/meshes/cupboard_big_door.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="collision">
+        <pose>0 0 0.600075 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.51423 0.01905 1.20015</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="right_big_door">
+      <inertial>
+        <mass>2</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <pose>-0.2568750 -0.2039152 0.9271 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://cupboard2/meshes/cupboard_big_door.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="collision">
+        <pose>0 0 0.600075 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.51423 0.01905 1.20015</size>
+          </box>
+        </geometry>
+      </collision>
+    </link> -->
+
+    <joint type="revolute" name="left_small_door_joint">
+      <pose>0.259 0 0 0 0 0</pose>
+      <child>left_small_door</child>
+      <parent>body</parent>
+      <axis>
+        <limit>
+          <upper>2</upper>
+          <lower>0</lower>
+        </limit>
+        <xyz>0 0 1</xyz>
+        <dynamics>
+          <damping>10</damping>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <joint type="revolute" name="right_small_door_joint">
+      <pose>-0.259 0 0 0 0 0</pose>
+      <child>right_small_door</child>
+      <parent>body</parent>
+      <axis>
+        <limit>
+          <upper>0</upper>
+          <lower>-2</lower>
+        </limit>
+        <xyz>0 0 1</xyz>
+        <dynamics>
+          <damping>10</damping>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <!-- <joint type="revolute" name="left_big_door_joint">
+      <pose>0.259 0 0 0 0 0</pose>
+      <child>left_big_door</child>
+      <parent>body</parent>
+      <axis>
+        <limit>
+          <upper>2</upper>
+          <lower>0</lower>
+        </limit>
+        <xyz>0 0 1</xyz>
+        <dynamics>
+          <damping>10</damping>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <joint type="revolute" name="right_big_door_joint">
+      <pose>-0.259 0 0 0 0 0</pose>
+      <child>right_big_door</child>
+      <parent>body</parent>
+      <axis>
+        <limit>
+          <upper>0</upper>
+          <lower>-2</lower>
+        </limit>
+        <xyz>0 0 1</xyz>
+        <dynamics>
+          <damping>10</damping>
+        </dynamics>
+      </axis>
+    </joint> -->
+  </model>
+</sdf>

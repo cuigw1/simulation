@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="sofa">
+    <static>false</static>
+    <link name="link">
+   <!-->   <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://sofa/meshes/sofa.dae</uri>
+<scale>0.8 0.8 0.8</scale>
+          </mesh>
+        </geometry>
+      </collision><-->
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://sofa/meshes/sofa.dae</uri>
+<scale>0.8 0.8 0.8</scale>
+          </mesh>  
+        </geometry>
+
+      </visual>
+     <collision name="collision_1">
+	<pose>0.06 0  0.155 0 0 0</pose>
+        <geometry>
+		<box><size>0.62 1.62 0.31</size></box>
+        </geometry>
+
+      </collision>
+     <collision name="collision_2">
+	<pose>-0.19 0  0.32 0 0 0</pose>
+        <geometry>
+		<box><size>0.12 1.70 0.64</size></box>
+        </geometry>
+
+      </collision>
+
+     <collision name="collision_3">
+	<pose>0.06 0.795  0.42 -0.195 0 0</pose>
+        <geometry>
+		<box><size>0.62 0.13 0.32</size></box>
+        </geometry>
+
+      </collision>
+     <collision name="collision_4">
+	<pose>0.06 -0.795  0.42 0.195 0 0</pose>
+        <geometry>
+		<box><size>0.62 0.13 0.32</size></box>
+        </geometry>
+
+      </collision>
+    </link>
+  </model>
+</sdf>

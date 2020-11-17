@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="microwave">
+    <static>false</static>
+    <link name="body">
+
+      <inertial>
+        <mass>15</mass>
+        <inertia>
+          <ixx>0.58</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.58</iyy>
+          <iyz>0</iyz>
+          <izz>0.19</izz>
+        </inertia>
+      </inertial>
+
+      <visual name="visual">
+<pose>0 -0.59 0.02 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://microwave/meshes/microwave_body.dae</uri>
+<scale>0.0012 0.0012 0.0012</scale>
+          </mesh>
+        </geometry>
+
+      </visual>
+      <collision name="body_box_1">
+<pose>0.0048 0.075 0.042 0 0 0</pose>
+        <geometry>
+<box><size>0.784 0.60 0.084</size></box>
+        </geometry>
+
+      </collision>
+
+      <collision name="body_box_2">
+<pose>-0.357 0.075 0.20 0 0 0</pose>
+        <geometry>
+<box><size>0.06 0.60 0.40</size></box>
+        </geometry>
+
+      </collision>
+
+      <collision name="body_box_3">
+<pose>0.294 0.075 0.20 0 0 0</pose>
+        <geometry>
+<box><size>0.205 0.60 0.40</size></box>
+        </geometry>
+
+      </collision>
+      <collision name="body_box_4">
+<pose>0.0048 0.352 0.20 0 0 0</pose>
+        <geometry>
+<box><size>0.784 0.05 0.40</size></box>
+        </geometry>
+
+      </collision>
+
+      <collision name="body_box_5">
+<pose>0.0048 0.075 0.382 0 0 0</pose>
+        <geometry>
+<box><size>0.784 0.60 0.056</size></box>
+        </geometry>
+
+      </collision>
+    </link>
+<link name="door">
+
+      <inertial>
+        <mass>0.4</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+
+<pose>-0.06 -0.24 0.025 0 0 0</pose>
+	 <visual name="visual">
+<pose>0 -0.64 0.02 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://microwave/meshes/microwave_door.dae</uri>
+<scale>0.0012 0.0012 0.0012</scale>
+          </mesh>
+        </geometry>
+
+      </visual>
+<collision name = "ad">
+<pose>-0.01 -0.0045 0.192 0 0 0</pose>
+ <geometry>
+<box><size>0.645 0.035 0.384</size></box>
+        </geometry>
+      </collision>
+</link>
+
+      <joint type="revolute" name="door_joint">
+        <pose>-0.322 0 0 0 0 0</pose>
+        <child>door</child>
+        <parent>body</parent>
+        <axis>
+    		<limit>
+      			<upper>0.0</upper>
+      			<lower>-2</lower>
+    		</limit>
+          <xyz>0 0 1</xyz>
+          <dynamics>
+            <damping>10</damping>
+          </dynamics>
+        </axis>
+      </joint>
+
+
+  </model>
+</sdf>

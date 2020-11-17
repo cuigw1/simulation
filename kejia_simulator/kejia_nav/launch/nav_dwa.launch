@@ -1,0 +1,56 @@
+<!-- -->
+
+<launch>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="namespace" default=""/>
+  <arg name="initial_pose_x" default="6.0"/>
+  <arg name="initial_pose_y" default="-2.5"/>
+  <arg name="initial_pose_a" default="-1.7"/>
+  <arg name="scan_topic" default="scan"/>
+  <arg name="need_smoother" default="false"/>
+
+  <param name="/use_sim_time" value="$(arg use_sim_time)"/>
+
+    <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find kejia_mapping)/map/gpsr.yaml"/>
+
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
+    <param name="shutdown_costmaps" value="false" />
+    <param name="controller_frequency" value="10" />
+    <param name="planner_patience" value="5.0" />
+    <param name="controller_patience" value="15.0" />
+    <param name="conservative_reset_dist" value="3.0" />
+    <param name="planner_frequency" value="5.0" />
+    <param name="oscillation_timeout" value="10.0" />
+    <param name="oscillation_distance" value="0.22" />
+
+    <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+
+    <rosparam file="$(find kejia_nav)/cfg/dwa/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find kejia_nav)/cfg/dwa/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find kejia_nav)/cfg/dwa/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find kejia_nav)/cfg/dwa/global_costmap_params.yaml" command="load" />
+
+    <rosparam file="$(find kejia_nav)/cfg/dwa/base_global_planner_params.yaml" command="load" />
+    <rosparam file="$(find kejia_nav)/cfg/dwa/dwa_local_planner_params.yaml" command="load" />
+    <remap from="/cmd_vel" to="/nav/cmd_vel" if="$(arg need_smoother)"/>
+   </node>
+
+   <!--- Run AMCL -->
+  <include file="$(find kejia_nav)/launch/amcl.launch">
+    <arg name="tf_prefix" value="$(arg namespace)" />
+    <arg name="scan_topic" value="$(arg scan_topic)" />
+    <arg name="use_map_topic" value="true" />
+    <arg name="initial_pose_x" value="$(arg initial_pose_x)" />
+    <arg name="initial_pose_y" value="$(arg initial_pose_y)" />
+    <arg name="initial_pose_a" value="$(arg initial_pose_a)" />
+    <arg name="odom_model_type" value="diff"/>
+    <arg name="global_frame_id" value="map"/>
+  </include>
+  <!-- <node pkg="tf" type="static_transform_publisher" name="map_odom" args="$(arg initial_pose_x) $(arg initial_pose_y) 0 0 0 0 1 /map /odom 100" /> -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="map_odom" args="0 0 0 0 0 0 1 /map /odom 100" /> -->
+
+  <node pkg="rviz" type="rviz" name="rviz_kejia_nav" args="-d $(find kejia_nav)/cfg/nav.rviz"/>
+</launch>

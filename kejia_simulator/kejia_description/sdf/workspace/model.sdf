@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="workspace">
+    <static>true</static>
+    <link name="link">
+      <collision name="collision">
+<pose>-0.1 -0.15 0.25 0 0 0</pose>
+        <geometry>
+	<box><size>2.63 1.16 0.55</size></box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://workspace/meshes/workspace.dae</uri>
+<scale>0.7 0.7 0.7</scale>
+          </mesh>
+        </geometry>
+
+      </visual>
+    </link>
+  </model>
+</sdf>

@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: kejia_description
+    relative_path: urdf/kejia.urdf.xacro
+    xacro_args: --inorder
+  SRDF:
+    relative_path: config/kejia.srdf
+  CONFIG:
+    author_name: Guowei Cui
+    author_email: cuigw@mail.ustc.edu.cn
+    generated_timestamp: 1604026696

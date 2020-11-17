@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="kinect.xacro"/>
+
+  <xacro:macro name="kejia_support" params="name parent xyz rpy meshes">
+
+  <!-- kejia_support -->
+  <joint name="${parent}_${name}_joint" type="prismatic">
+    <parent link="${parent}"/>
+    <child link="${name}"/>
+    <origin xyz="${xyz}" rpy="${rpy}"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="100.0" lower="-0.7" upper="0.0" velocity="0.3"/>
+  </joint>
+
+  <link name="${name}">
+    <inertial>
+      <mass value="1.5"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="${name}_collision1">
+      <origin rpy="0 0 0" xyz="0.04 0 0"/>
+      <geometry>
+        <box size="0.12 0.1 0.05"/>
+      </geometry>
+    </collision>
+    <visual name="${name}_visual1">
+      <origin rpy="0 0 0" xyz="0.04 0 0"/>
+      <geometry>
+        <box size="0.12 0.1 0.05"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision name="${name}_collision2">
+      <origin rpy="0 0 0" xyz="0.125 0 0.075"/>
+      <geometry>
+        <box size="0.05 0.1 0.20"/>
+      </geometry>
+    </collision>
+    <visual name="${name}_visual2">
+      <origin rpy="0 0 0" xyz="0.125 0 0.075"/>
+      <geometry>
+        <box size="0.05 0.1 0.20"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision name="${name}_collision3">
+      <origin rpy="0 0 0" xyz="0.20 0 0.15"/>
+      <geometry>
+        <box size="0.1 0.1 0.05"/>
+      </geometry>
+    </collision>
+    <visual name="${name}_visual3">
+      <origin rpy="0 0 0" xyz="0.20 0 0.15"/>
+      <geometry>
+        <box size="0.1 0.1 0.05"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+  </link>
+
+  <joint name="neck_pan_joint" type="revolute">
+    <parent link="${name}"/>
+    <child link="head_pan"/>
+    <origin xyz="0.225 0 0.175" rpy="${rpy}"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10.0" lower="-1.7" upper="1.7" velocity="3.0"/>
+  </joint>
+  <link name="head_pan">
+    <inertial>
+      <mass value="0.1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="head_pan_collision">
+      <origin rpy="0 0 0" xyz="0 0 0.05"/>
+      <geometry>
+        <box size="0.05 0.05 0.10"/>
+      </geometry>
+    </collision>
+    <visual name="head_pan_visual">
+      <origin rpy="0 0 0" xyz="0 0 0.05"/>
+      <geometry>
+        <box size="0.05 0.05 0.10"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+  </link>
+
+  <joint name="neck_tilt_joint" type="revolute">
+    <parent link="head_pan"/>
+    <child link="head_tilt"/>
+    <origin xyz="0 0 0.10" rpy="${rpy}"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="10.0" lower="-1.7" upper="1.7" velocity="3.0"/>
+  </joint>
+  <link name="head_tilt">
+    <inertial>
+      <mass value="0.1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="head_tilt_collision">
+      <origin rpy="1.57 0 0" xyz="0 0 0.025"/>
+      <geometry>
+        <cylinder length="0.1" radius=".025"/>
+      </geometry>
+    </collision>
+    <visual name="head_tilt_visual">
+      <origin rpy="1.57 0 0" xyz="0 0 0.025"/>
+      <geometry>
+        <cylinder length="0.1" radius=".025"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+    <collision name="head_tilt_collision1">
+      <origin rpy="0 0 0" xyz="0 0 0.045"/>
+      <geometry>
+        <box size="0.05 0.10 0.01"/>
+      </geometry>
+    </collision>
+    <visual name="head_tilt_visual1">
+      <origin rpy="0 0 0" xyz="0 0 0.045"/>
+      <geometry>
+        <box size="0.05 0.10 0.01"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+  </link>
+
+  <gazebo reference="${name}">
+    <material value="Gazebo/Red"/>
+  </gazebo>
+
+  <gazebo reference="head_pan">
+    <material value="Gazebo/Green"/>
+  </gazebo>
+
+  <gazebo reference="head_tilt">
+    <material value="Gazebo/Blue"/>
+  </gazebo>
+
+  <xacro:kinect name="head_kinect" parent="head_tilt" xyz="0 0 0.086" rpy="0 0 0"  meshes="${meshes}"/>
+
+  </xacro:macro>
+
+</robot>

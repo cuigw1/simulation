@@ -1,0 +1,267 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <include>
+      <uri>model://home</uri>
+      <name>walls</name>
+      <pose>0 -1 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://Tub</uri>
+      <name>tub1</name>
+      <pose>-2.68 -6.05 0 0 0 -1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://Washbasin</uri>
+      <name>washbasin1</name>
+      <pose>-2.10 -4.22 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://sink</uri>
+      <name>sink1</name>
+      <pose>-7.51 0.13 0 0 0 3.14</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://Washbasin</uri>
+      <name>washbasin2</name>
+      <pose>7.32 -1.01 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://bed</uri>
+      <name>bed1</name>
+      <pose>3.78 3.09 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://closet</uri>
+      <name>closet1</name>
+      <pose>3.90 0.68 0 0 0 3.14</pose>
+    </include>
+
+    <include>
+      <uri>model://desk</uri>
+      <name>desk1</name>
+      <pose>8.00 3.06 0 0 0 -1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://tv</uri>
+      <name>tv1</name>
+      <pose>2.02 2.39 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://sofa</uri>
+      <name>sofa1</name>
+      <pose>-0.90 2.42 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://teapoy</uri>
+      <name>living_table</name>
+      <pose>0.02 2.40 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://trash</uri>
+      <name>trash1</name>
+      <pose>-5.81 -1.12 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://worktable</uri>
+      <name>dining_table</name>
+      <pose>-3.85 0.20 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://plant</uri>
+      <name>plant1</name>
+      <pose>2.03 3.81 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://cupboard2</uri>
+      <name>cupboard2</name>
+      <pose>-8.10 3.47 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://worktable</uri>
+      <name>kitchen_table</name>
+      <pose>-8.05 1.61 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://microwave</uri>
+      <name>microwave1</name>
+      <pose>-7.9 1.2 0.71 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://refrigerator</uri>
+      <name>refrigerator1</name>
+      <pose>-5.15 3.66 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://washmachine</uri>
+      <name>washmachine1</name>
+      <pose>-3.74 -5.80 0 0 0 -3.14</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://bed</uri>
+      <name>bed2</name>
+      <pose>1.2 -5.01 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://desk</uri>
+      <name>desk2</name>
+      <pose>0.59 -2.59 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://bookshelf</uri>
+      <name>bookshelf1</name>
+      <pose>3.87 -4.73 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://bookshelf</uri>
+      <name>bookshelf2</name>
+      <pose>3.87 -5.686 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://desk</uri>
+      <name>desk3</name>
+      <pose>6.10 -5.33 0 0 0 3.14159</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://human</uri>
+      <name>jamie</name>
+      <pose>5.6 -3.7 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://book</uri>
+      <name>book1</name>
+      <pose>5.99 -5.30 0.74 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://beer</uri>
+      <name>beer1</name>
+      <pose>-8.060 3.715 0.940 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://coke_can</uri>
+      <name>coke1</name>
+      <pose>-8.022 3.144 0.938 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://coke_can</uri>
+      <name>coke2</name>
+      <pose>-8.035 3.319 0.938 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://bottle</uri>
+      <name>bottle1</name>
+      <pose>-7.769 1.867 0.710 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://cup</uri>
+      <name>cup1</name>
+      <pose>-7.773 2.054 0.710 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://bowl</uri>
+      <name>bowl1</name>
+      <pose>-7.771 2.311 0.710 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://biscuits</uri>
+      <name>biscuits1</name>
+      <pose>-7.939 3.733 1.662 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://biscuits</uri>
+      <name>biscuits2</name>
+      <pose>-7.994 3.624 1.662 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://snacks</uri>
+      <name>snacks1</name>
+      <pose>-8.156 3.276 1.645 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://snacks</uri>
+      <name>snacks2</name>
+      <pose>-8.211 3.108 1.648 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://sticky_notes</uri>
+      <name>sticky_notes1</name>
+      <pose>-8.021 3.410 1.656 0 0 0</pose>
+    </include>
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <!-- <pose frame=''>-1.04014 -0.290352 20.356 -3.7e-05 1.5698 -1.58679</pose> -->
+        <pose frame=''>-1.46455 1.51528 13.6804 -2e-06 1.5538 -1.57082</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+  </world>
+</sdf>

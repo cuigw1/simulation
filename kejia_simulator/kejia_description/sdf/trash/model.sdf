@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="trash">
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <gravity>false</gravity>
+      <inertial>
+	<mass>1</mass>
+      </inertial>
+      <visual name="visual">
+	<geometry>
+	  <mesh>
+	    <uri>model://trash/meshes/trash.dae</uri>
+	  </mesh>
+	</geometry>
+      </visual>
+      <collision name="trash">
+	<geometry>
+	  <mesh>
+	    <uri>model://trash/meshes/trash.dae</uri>
+	  </mesh>
+	</geometry>
+      </collision>
+    </link>
+    <static>0</static>
+  </model>
+</sdf>

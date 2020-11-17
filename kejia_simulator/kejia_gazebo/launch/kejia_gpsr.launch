@@ -1,0 +1,49 @@
+<launch>
+　<env name="GAZEBO_MODEL_PATH" value="$(find kejia_description)/sdf"/>
+  <arg name="gazebo" default='true'/>
+  <arg name="robot_ns" default='kejia'/>
+  <arg name="paused" default="false" doc="Start gazebo in paused mode" />
+  <arg name="x" default="6.0"/>
+  <arg name="y" default="-2.5"/>
+  <arg name="z" default="0"/>
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw" default="-1.7"/>
+  <arg name="use_sim_time" default="true"/>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find kejia_gazebo)/worlds/gpsr.world"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <!-- more default parameters can be changed here -->
+  </include>
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find kejia_description)/urdf/kejia.xacro'" />
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="kejia_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model $(arg robot_ns) -x $(arg x) -y $(arg y) -z $(arg z)
+              -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)" />
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find kejia_gazebo)/controller/controller_kejia.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="joint_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="kejia" args="joint_state_controller
+                                    sz_position_controller
+                                    sy1_position_controller
+                                    sy2_position_controller
+                                    sy3_position_controller
+                                    wr_position_controller
+                                    lf_position_controller
+                                    rf_position_controller
+                                    ev_position_controller
+                                    pan_position_controller
+                                    tilt_position_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/kejia/joint_states" />
+  </node>
+
+</launch>

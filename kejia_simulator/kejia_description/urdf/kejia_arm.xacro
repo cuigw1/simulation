@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+  <xacro:property name="max_angle" value="2.8" />
+  <xacro:property name="arm_base_length" value="0.05" />
+  <xacro:property name="arm_base_radius" value="0.035" />
+  <xacro:property name="arm_lr_length" value="0.08" />
+  <xacro:property name="arm_lr_radius" value="0.025" />
+  <xacro:property name="arm_ud1_length" value="0.18" />
+  <xacro:property name="arm_ud1_radius" value="0.025" />
+  <xacro:property name="arm_ud2_length" value="0.18" />
+  <xacro:property name="arm_ud2_radius" value="0.025" />
+  <xacro:property name="arm_ud3_length" value="0.16" />
+  <xacro:property name="arm_ud3_radius" value="0.025" />
+  <xacro:property name="arm_wrist_length" value="0.20" />
+  <xacro:property name="arm_wrist_width" value="0.05" />
+  <xacro:property name="arm_wrist_height" value="0.03" />
+  <xacro:property name="arm_finger_length" value="0.10" />
+  <xacro:property name="arm_joint_length" value="0.06" />
+  <xacro:property name="arm_joint_radius" value="0.03" />
+  <xacro:property name="arm_joint_velocity" value="2.0" />
+
+
+  <xacro:macro name="kejia_arm" params="name parent xyz rpy meshes">
+
+    <!-- kejia_arm -->
+    <joint name="${parent}_${name}_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${name}_base"/>
+      <origin xyz="${xyz}" rpy="${rpy}"/>
+    </joint>
+
+    <link name="${name}_base">
+      <inertial>
+        <mass value="0.1"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+      <collision name="${name}_collision">
+        <origin rpy="0 0 0" xyz="0 0 ${-arm_base_length / 2.0}"/>
+        <geometry>
+          <cylinder length="${arm_base_length}" radius="${arm_base_radius}"/>
+        </geometry>
+      </collision>
+      <visual name="${name}_visual">
+        <origin rpy="0 0 0" xyz="0 0 ${-arm_base_length / 2.0}"/>
+        <geometry>
+          <cylinder length="${arm_base_length}" radius="${arm_base_radius}"/>
+        </geometry>
+      </visual>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 ${-0.005 - arm_base_length}"/>
+        <geometry>
+          <cylinder length="0.01" radius="${arm_base_radius + 0.001}"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${name}_base_${name}_lr_joint" type="revolute">
+      <parent link="${name}_base"/>
+      <child link="${name}_lr"/>
+      <origin xyz="0 0 ${-arm_base_length}" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="10.0" lower="${-max_angle}" upper="${max_angle}" velocity="${arm_joint_velocity}"/>
+    </joint>
+    <link name="${name}_lr">
+      <inertial>
+        <mass value="0.1"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 ${-arm_lr_length / 2.0}"/>
+        <geometry>
+          <cylinder length="${arm_lr_length}" radius="${arm_lr_radius}"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 ${-arm_lr_length / 2.0}"/>
+        <geometry>
+          <cylinder length="${arm_lr_length}" radius="${arm_lr_radius}"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${name}_lr_${name}_ud1_joint" type="revolute">
+      <parent link="${name}_lr"/>
+      <child link="${name}_ud1"/>
+      <origin xyz="0 0 ${-arm_lr_length - arm_joint_radius / 2}" rpy="0 0 0"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="10.0" lower="${-max_angle}" upper="${max_angle}" velocity="${arm_joint_velocity}"/>
+    </joint>
+    <link name="${name}_ud1">
+      <inertial>
+        <mass value="1.0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+      <collision>
+        <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="${arm_joint_length}" radius="${arm_joint_radius}"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="${arm_joint_length}" radius="${arm_joint_radius}"/>
+        </geometry>
+      </visual>
+      <collision name="${name}_collision">
+        <origin rpy="0 0 0" xyz="0 0 ${-arm_ud1_length / 2 - arm_joint_radius / 2}"/>
+        <geometry>
+          <cylinder length="${arm_ud1_length}" radius="${arm_ud1_radius}"/>
+        </geometry>
+      </collision>
+      <visual name="${name}_visual">
+        <origin rpy="0 0 0" xyz="0 0 ${-arm_ud1_length / 2 - arm_joint_radius / 2}"/>
+        <geometry>
+          <cylinder length="${arm_ud1_length}" radius="${arm_ud1_radius}"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${name}_ud1_${name}_ud2_joint" type="revolute">
+      <parent link="${name}_ud1"/>
+      <child link="${name}_ud2"/>
+      <origin xyz="0 0 ${-arm_ud1_length - arm_joint_radius}" rpy="0 0 0"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="10.0" lower="${-max_angle}" upper="${max_angle}" velocity="${arm_joint_velocity}"/>
+    </joint>
+    <link name="${name}_ud2">
+      <inertial>
+        <mass value="1.0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+      <collision>
+        <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="${arm_joint_length}" radius="${arm_joint_radius}"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="${arm_joint_length}" radius="${arm_joint_radius}"/>
+        </geometry>
+      </visual>
+      <collision name="${name}_collision">
+        <origin rpy="0 0 0" xyz="0 0 ${-arm_ud2_length / 2 - arm_joint_radius / 2}"/>
+        <geometry>
+          <cylinder length="${arm_ud2_length}" radius="${arm_ud2_radius}"/>
+        </geometry>
+      </collision>
+      <visual name="${name}_visual">
+        <origin rpy="0 0 0" xyz="0 0 ${-arm_ud2_length / 2 - arm_joint_radius / 2}"/>
+        <geometry>
+          <cylinder length="${arm_ud2_length}" radius="${arm_ud2_radius}"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${name}_ud2_${name}_ud3_joint" type="revolute">
+      <parent link="${name}_ud2"/>
+      <child link="${name}_ud3"/>
+      <origin xyz="0 0 ${-arm_ud2_length - arm_joint_radius}" rpy="0 0 0"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="10.0" lower="${-max_angle}" upper="${max_angle}" velocity="${arm_joint_velocity}"/>
+    </joint>
+    <link name="${name}_ud3">
+      <inertial>
+        <mass value="1.0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+      <collision>
+        <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="${arm_joint_length}" radius="${arm_joint_radius}"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="${arm_joint_length}" radius="${arm_joint_radius}"/>
+        </geometry>
+      </visual>
+      <collision name="${name}_collision">
+        <origin rpy="0 0 0" xyz="0 0 ${-arm_ud3_length / 2 - arm_joint_radius / 2}"/>
+        <geometry>
+          <cylinder length="${arm_ud3_length}" radius="${arm_ud3_radius}"/>
+        </geometry>
+      </collision>
+      <visual name="${name}_visual">
+        <origin rpy="0 0 0" xyz="0 0 ${-arm_ud3_length / 2 - arm_joint_radius / 2}"/>
+        <geometry>
+          <cylinder length="${arm_ud3_length}" radius="${arm_ud3_radius}"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${name}_ud3_${name}_wrist_joint" type="revolute">
+      <parent link="${name}_ud3"/>
+      <child link="${name}_wrist"/>
+      <origin xyz="0 0 ${-arm_ud3_length - arm_joint_radius / 2 - arm_wrist_height / 2}" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="10.0" lower="-3.14" upper="3.14" velocity="1.0"/>
+    </joint>
+    <link name="${name}_wrist">
+      <inertial>
+        <mass value="0.3"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <box size="${arm_wrist_width} ${arm_wrist_length} ${arm_wrist_height}"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <box size="${arm_wrist_width} ${arm_wrist_length} ${arm_wrist_height}"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${name}_wrist_gripper_left_joint" type="prismatic">
+      <parent link="${name}_wrist"/>
+      <child link="gripper_left"/>
+      <origin xyz="0 0.005 ${-arm_wrist_height / 2 - arm_finger_length / 2}" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="10.0" lower="0" upper="${arm_wrist_length / 2 - 0.015}" velocity="${arm_joint_velocity / 2}"/>
+    </joint>
+    <link name="gripper_left">
+      <inertial>
+        <mass value="0.1"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <box size="0.04 0.01 ${arm_finger_length}"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <box size="0.04 0.01 ${arm_finger_length}"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${name}_wrist_gripper_right_joint" type="prismatic">
+      <parent link="${name}_wrist"/>
+      <child link="gripper_right"/>
+      <origin xyz="0 0.005 ${-arm_wrist_height / 2 - arm_finger_length / 2}" rpy="0 0 0"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="10.0" lower="0" upper="${arm_wrist_length / 2 - 0.015}" velocity="0.1"/>
+    </joint>
+    <link name="gripper_right">
+      <inertial>
+        <mass value="0.1"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <box size="0.04 0.01 ${arm_finger_length}"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <box size="0.04 0.01 ${arm_finger_length}"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${name}_wrist_end_effector_joint" type="fixed">
+      <parent link="${name}_wrist"/>
+      <child link="end_effector"/>
+      <origin xyz="0 0 ${-arm_wrist_height / 2 - arm_finger_length / 2}" rpy="0 0 0"/>
+    </joint>
+    <link name="end_effector">
+      <inertial>
+        <mass value="0.01"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <box size="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <gazebo>
+      <gripper name="kejia_gripper">
+        <grasp_check>
+          <attach_steps>2</attach_steps>
+          <detach_steps>4</detach_steps>
+          <min_contact_count>1</min_contact_count>
+        </grasp_check>
+        <gripper_link>gripper_left</gripper_link>
+        <gripper_link>gripper_right</gripper_link>
+        <palm_link>${name}_wrist</palm_link>
+      </gripper>
+    </gazebo>
+
+    <gazebo reference="${name}_base">
+      <material value="Gazebo/Green"/>
+    </gazebo>
+
+    <gazebo reference="${name}_ud1">
+      <material value="Gazebo/Blue"/>
+    </gazebo>
+
+    <gazebo reference="${name}_ud2">
+      <material value="Gazebo/Blue"/>
+    </gazebo>
+
+    <gazebo reference="${name}_ud3">
+      <material value="Gazebo/Blue"/>
+    </gazebo>
+
+    <gazebo reference="${name}_wrist">
+      <material value="Gazebo/Green"/>
+      <mu1>100000</mu1>
+      <mu2>100000</mu2>
+      <kp>100000000.0</kp>
+      <kd>1.0</kd>
+    </gazebo>
+
+    <gazebo reference="gripper_right">
+      <material value="Gazebo/Black"/>
+      <mu1>100000</mu1>
+      <mu2>100000</mu2>
+      <kp>100000000.0</kp>
+      <kd>1.0</kd>
+    </gazebo>
+
+    <gazebo reference="gripper_left">
+      <material value="Gazebo/Black"/>
+      <mu1>100000</mu1>
+      <mu2>100000</mu2>
+      <kp>100000000.0</kp>
+      <kd>1.0</kd>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>

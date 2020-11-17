@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="stove">
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <gravity>false</gravity>
+      <inertial>
+	<mass>20</mass>
+      </inertial>
+      <visual name="stove">
+	<geometry>
+	  <mesh>
+	    <uri>model://stove/meshes/stove.dae</uri>
+	  </mesh>
+	</geometry>
+      </visual>
+      <collision name="stove">
+	<geometry>
+	  <mesh>
+	    <uri>model://stove/meshes/stove.dae</uri>
+	  </mesh>
+	</geometry>
+      </collision>
+    </link>
+    <static>1</static>
+  </model>
+</sdf>

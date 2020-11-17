@@ -1,0 +1,72 @@
+# Simulation settings for using moveit_sim_controllers
+moveit_sim_hw_interface:
+  joint_model_group: arm
+  joint_model_group_pose: init
+# Settings for ros_control_boilerplate control loop
+generic_hw_control_loop:
+  loop_hz: 300
+  cycle_time_error_threshold: 0.01
+# Settings for ros_control hardware interface
+hardware_interface:
+  joints:
+    - ev_support_joint
+    - neck_pan_joint
+    - neck_tilt_joint
+    - arm_base_arm_lr_joint
+    - arm_lr_arm_ud1_joint
+    - arm_ud1_arm_ud2_joint
+    - arm_ud2_arm_ud3_joint
+    - arm_ud3_arm_wrist_joint
+    - arm_wrist_gripper_left_joint
+    - arm_wrist_gripper_right_joint
+  sim_control_mode: 1  # 0: position, 1: velocity
+# Publish all joint states
+# Creates the /joint_states topic necessary in ROS
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+controller_list:
+  - name: arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - arm_base_arm_lr_joint
+      - arm_lr_arm_ud1_joint
+      - arm_ud1_arm_ud2_joint
+      - arm_ud2_arm_ud3_joint
+      - arm_ud3_arm_wrist_joint
+arm_controller:
+  type: position_controllers/JointPositionController
+  joints:
+    - arm_base_arm_lr_joint
+    - arm_lr_arm_ud1_joint
+    - arm_ud1_arm_ud2_joint
+    - arm_ud2_arm_ud3_joint
+    - arm_ud3_arm_wrist_joint
+  gains:
+    arm_base_arm_lr_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    arm_lr_arm_ud1_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    arm_ud1_arm_ud2_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    arm_ud2_arm_ud3_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    arm_ud3_arm_wrist_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

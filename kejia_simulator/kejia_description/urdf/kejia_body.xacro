@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+  <xacro:property name="radius_actuated_wheel" value="0.09" />
+  <xacro:property name="radius_encoder_wheel" value="0.06" />
+
+  <xacro:include filename="inertia_tensors.xacro"/>
+  <xacro:include filename="transmission.xacro"/>
+  <xacro:include filename="kejia_chassis.xacro"/>
+  <xacro:include filename="wheel.xacro"/>
+  <xacro:include filename="wheel_back.xacro"/>
+  <xacro:include filename="kejia_ev.xacro"/>
+  <xacro:include filename="kejia_support.xacro"/>
+  <xacro:include filename="kejia_arm.xacro"/>
+  <xacro:include filename="kejia_plugins.xacro"/>
+
+  <xacro:macro name="kejia_body" params="parent meshes">
+
+    <!-- base_link -->
+    <link name="${parent}"/>
+
+    <!-- Chassis -->
+    <xacro:kejia_chassis name="chassis" parent="${parent}" xyz="0 0 0.15" rpy="0 0 0"  meshes="${meshes}"/>
+
+    <!-- Wheels  -->
+    <xacro:wheel name="left"   parent="${parent}"  xyz="0 0.20 ${radius_actuated_wheel}" rpy="${M_PI/2} 0 0" radius="${radius_actuated_wheel}" length="0.05" meshes="${meshes}"/>
+    <xacro:wheel name="right"    parent="${parent}"  xyz="0 -0.20 ${radius_actuated_wheel}" rpy="${M_PI/2} 0 0" radius="${radius_actuated_wheel}" length="0.05" meshes="${meshes}"/>
+    <xacro:back_wheel name="back"  parent="${parent}"  xyz="-0.15 0.0 ${radius_encoder_wheel}" rpy="${M_PI/2} 0 0" radius="${radius_encoder_wheel}" meshes="${meshes}"/>
+    <xacro:back_wheel name="front"  parent="${parent}"  xyz="0.15 0.0 ${radius_encoder_wheel}" rpy="${M_PI/2} 0 0" radius="${radius_encoder_wheel}" meshes="${meshes}"/>
+
+    <!-- Ev -->
+    <xacro:kejia_ev name="ev" parent="chassis" xyz="0 0 0.10" rpy="0 0 0"  meshes="${meshes}"/>
+
+    <!-- kejia_support -->
+    <xacro:kejia_support name="support" parent="ev" xyz="0 0 0.95" rpy="0 0 0"  meshes="${meshes}"/>
+
+    <!-- kejia_arm -->
+    <xacro:kejia_arm name="arm" parent="support" xyz="0.215 0 0.125" rpy="0 0 0"  meshes="${meshes}"/>
+
+    <!-- ev -->
+    <xacro:position_transmission name="ev_support"/>
+    <!-- arm -->
+    <xacro:position_transmission name="arm_base_arm_lr"/>
+    <xacro:position_transmission name="arm_lr_arm_ud1"/>
+    <xacro:position_transmission name="arm_ud1_arm_ud2"/>
+    <xacro:position_transmission name="arm_ud2_arm_ud3"/>
+    <xacro:position_transmission name="arm_ud3_arm_wrist"/>
+    <xacro:effort_transmission name="arm_wrist_gripper_left"/>
+    <xacro:effort_transmission name="arm_wrist_gripper_right"/>
+    <!-- neck -->
+    <xacro:position_transmission name="neck_pan"/>
+    <xacro:position_transmission name="neck_tilt"/>
+
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/kejia</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        <legacyModeNS>true</legacyModeNS>
+      </plugin>
+    </gazebo>
+
+    <!-- Differential drive controller  -->
+    <gazebo>
+      <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller_front">
+        <leftJoint>left_wheel_joint</leftJoint>
+        <rightJoint>right_wheel_joint</rightJoint>
+        <wheelSeparation>0.4</wheelSeparation>
+        <wheelDiameter>0.18</wheelDiameter>
+        <wheelTorque>30</wheelTorque>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>41</updateRate>
+        <commandTopic>/cmd_vel</commandTopic>
+        <odometryTopic>/odom</odometryTopic>
+        <odometryFrame>/odom</odometryFrame>
+        <odometryRate>30.0</odometryRate>
+        <robotBaseFrame>/base_link</robotBaseFrame>
+        <legacyMode>false</legacyMode>
+      </plugin>
+    </gazebo>
+
+  </xacro:macro>
+</robot>

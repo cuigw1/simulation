@@ -1,0 +1,568 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="man">
+    <static>false</static>
+
+    <link name="arm_l">
+		<pose>0.150 0 1.307 0 0 0</pose> 
+      <collision name = "collision">
+				<pose>0 0 -0.1279 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.2558</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/arm_l.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+    <link name="arm_r">
+		<pose>-0.150 0 1.307 0 0 0</pose> 
+      <collision name = "collision">
+				<pose>0 0 -0.1279 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.2558</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/arm_r.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+    <link name="body">
+		<pose>0 0 1.107 0 0 0</pose>
+      <collision name = "collision">
+				<pose>0 0 0.15385 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.105</radius>
+            <length>0.3077</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/body.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+    <link name="feet_l">
+		<pose>0.06 0 0 0 0 0</pose>
+      <collision name = "collision">
+				<pose>0 -0.04 0.0361 0 0 0</pose>
+        <geometry>
+          <box>
+						<size>0.0745 0.2212 0.0722</size>
+					</box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/feet_l.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+    <link name="feet_r">
+		<pose>-0.06 0 0 0 0 0</pose>
+      <collision name = "collision">
+				<pose>0 -0.04 0.0361 0 0 0</pose>
+        <geometry>
+          <box>
+						<size>0.0745 0.2212 0.0722</size>
+					</box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/feet_r.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+		<link name="forearm_l">
+		<pose>0.150 0 1.0512 0 0 0</pose> 
+      <collision name = "collision">
+				<pose>0 0 -0.10695 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.035</radius>
+            <length>0.2139</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/forearm_l.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+		<link name="forearm_r">
+		<pose>-0.150 0 1.0512 0 0 0</pose> 
+      <collision name = "collision">
+				<pose>0 0 -0.10695 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.035</radius>
+            <length>0.2139</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/forearm_r.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+		<link name="hand_l">
+		<pose>0.150 0 0.8373 0 0 0</pose> 
+      <collision name = "collision">
+				<pose>0.006 0 -0.0775 0 0 0</pose>
+        <geometry>
+          <box>
+						<size>0.032 0.079 0.155</size>
+					</box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/hand_l.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+		<link name="hand_r">
+		<pose>-0.150 0 0.8373 0 0 0</pose> 
+      <collision name = "collision">
+				<pose>-0.006 0 -0.0775 0 0 0</pose>
+        <geometry>
+          <box>
+						<size>0.032 0.079 0.155</size>
+					</box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/hand_r.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+		<link name="head">
+		<pose>0 0 1.414 0 0 0</pose>
+      <collision name = "collision">
+				<pose>0 0 0.14 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.071</radius>
+            <length>0.28</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/head.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+		<link name="leg_r">
+		<pose>-0.06 0 0.0722 0 0 0</pose>
+      <collision name = "collision">
+				<pose>0 0 0.2058 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.045</radius>
+            <length>0.4116</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/leg_r.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+		<link name="leg_l">
+		<pose>0.06 0 0.0722 0 0 0</pose>
+      <collision name = "collision">
+				<pose>0 0 0.2058 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.045</radius>
+            <length>0.4116</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/leg_l.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+		<link name="thigh_l">
+		<pose>0.06 0 0.4837 0 0 0</pose>
+      <collision name = "collision">
+				<pose>0 0 0.1816 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.047</radius>
+            <length>0.3632</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/thigh_l.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+		<link name="thigh_r">
+		<pose>-0.06 0 0.4837 0 0 0</pose>
+      <collision name = "collision">
+				<pose>0 0 0.1816 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.047</radius>
+            <length>0.3632</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/thigh_r.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+		<link name="waist">
+		<pose>0 0 0.847 0 0 0</pose>
+      <collision name = "collision">
+				<pose>0 0 0.13 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.105</radius>
+            <length>0.260</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://man/meshes/waist.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+		</link>
+
+		<joint name="leg_feet_l" type="universal">
+        <pose>0 0 0.0722 0 0 0</pose>
+        <child>feet_l</child>
+        <parent>leg_l</parent>
+				<axis>
+          <xyz>1 0 0</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+				<axis2>
+          <xyz>0 0 1</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis2>
+
+		</joint>
+
+		<joint name="leg_feet_r" type="universal">
+        <pose>0 0 0.0722 0 0 0</pose>
+        <child>feet_r</child>
+        <parent>leg_r</parent>
+				<axis>
+          <xyz>1 0 0</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+				<axis2>
+          <xyz>0 0 1</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis2>
+		</joint>
+
+		<joint name="thigh_leg_l" type="revolute">
+        <pose>0 0 0.4116 0 0 0</pose>
+        <child>leg_l</child>
+        <parent>thigh_l</parent>
+				<axis>
+          <xyz>1 0 0</xyz>
+					<limit><lower>0</lower></limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+		</joint>
+
+		<joint name="thigh_leg_r" type="revolute">
+        <pose>0 0 0.4116 0 0 0</pose>
+        <child>leg_r</child>
+        <parent>thigh_r</parent>
+				<axis>
+          <xyz>1 0 0</xyz>
+					<limit><lower>0</lower></limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+		</joint>
+
+		<joint name="waist_thigh_r" type="universal">
+        <pose>0 0 0.3632 0 0 0</pose>
+        <child>thigh_r</child>
+        <parent>waist</parent>
+				<axis>
+          <xyz>1 0 0</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+				<axis2>
+          <xyz>0 0 1</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis2>
+		</joint>
+
+		<joint name="waist_thigh_l" type="universal">
+        <pose>0 0 0.3632 0 0 0</pose>
+        <child>thigh_l</child>
+        <parent>waist</parent>
+				<axis>
+          <xyz>1 0 0</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+				<axis2>
+          <xyz>0 0 1</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis2>
+		</joint>
+
+		<joint name="waist_body" type="universal">
+        <pose>0 0 0 0 0 0</pose>
+        <child>body</child>
+        <parent>waist</parent>
+				<axis>
+          <xyz>1 0 0</xyz>
+					<limit>
+						<upper>0.5</upper>	
+						<lower>-0.5</lower>				
+					</limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+				<axis2>
+          <xyz>0 0 1</xyz>
+					<limit>
+						<upper>1.3</upper>	
+						<lower>-1.3</lower>				
+					</limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis2>
+		</joint>
+
+		<joint name="body_head" type="universal">
+        <pose>0 0 0 0 0 0</pose>
+        <child>head</child>
+        <parent>body</parent>
+				<axis>
+          <xyz>1 0 0</xyz>
+					<limit>
+						<upper>1.3</upper>	
+						<lower>-1</lower>				
+					</limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+				<axis2>
+          <xyz>0 0 1</xyz>
+					<limit>
+						<upper>1.3</upper>	
+						<lower>-1.3</lower>				
+					</limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis2>
+		</joint>
+
+		<joint name="body_arm_r" type="universal">
+        <pose>0 0 0 0 0 0</pose>
+        <child>arm_r</child>
+        <parent>body</parent>
+				<axis>
+          <xyz>-1 0 0</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+				<axis2>
+          <xyz>0 0 1</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis2>
+		</joint>
+
+		<joint name="body_arm_l" type="universal">
+        <pose>0 0 0 0 0 0</pose>
+        <child>arm_l</child>
+        <parent>body</parent>
+				<axis>
+          <xyz>-1 0 0</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+				<axis2>
+          <xyz>0 0 1</xyz>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis2>
+		</joint>
+
+		<joint name="arm_forearm_r" type="revolute">
+        <pose>0 0 0 0 0 0</pose>
+        <child>forearm_r</child>
+        <parent>arm_r</parent>
+				<axis>
+          <xyz>-1 0 0</xyz>
+					<limit><lower>0</lower></limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+		</joint>
+
+		<joint name="arm_forearm_l" type="revolute">
+        <pose>0 0 0 0 0 0</pose>
+        <child>forearm_l</child>
+        <parent>arm_l</parent>
+				<axis>
+          <xyz>-1 0 0</xyz>
+					<limit><lower>0</lower></limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+		</joint>
+
+		<joint name="forearm_hand_l" type="universal">
+        <pose>0 0 0 0 0 0</pose>
+        <child>hand_l</child>
+        <parent>forearm_l</parent>
+				<axis>
+          <xyz>0 1 0</xyz>
+					<limit>
+						<upper>1.5</upper>	
+						<lower>-1.5</lower>				
+					</limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+				<axis2>
+          <xyz>0 0 1</xyz>
+					<limit>
+						<upper>1.5</upper>	
+						<lower>-1.5</lower>				
+					</limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis2>
+		</joint>
+
+		<joint name="forearm_hand_r" type="universal">
+        <pose>0 0 0 0 0 0</pose>
+        <child>hand_r</child>
+        <parent>forearm_r</parent>
+				<axis>
+          <xyz>0 1 0</xyz>
+					<limit>
+						<upper>1.5</upper>	
+						<lower>-1.5</lower>				
+					</limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis>
+				<axis2>
+          <xyz>0 0 1</xyz>
+					<limit>
+						<upper>1.5</upper>	
+						<lower>-1.5</lower>				
+					</limit>
+          <dynamics>
+            <damping>50</damping>
+          </dynamics>
+        </axis2>
+		</joint>
+
+  </model>
+</sdf>

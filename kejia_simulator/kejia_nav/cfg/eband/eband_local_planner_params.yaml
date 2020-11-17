@@ -1,0 +1,27 @@
+EBandPlannerROS:
+
+#Common Parameters
+  xy_goal_tolerance: 0.2
+  yaw_goal_tolerance: 0.2
+  rot_stopped_vel: 0.01
+  trans_stopped_vel: 0.01
+
+
+#Eband Parameters
+  eband_min_relative_overlap: 1.0
+
+#Trajectory Controller Parameters
+  max_vel_lin: 2.0
+  max_vel_th: 1.0
+  min_vel_lin: 0.1
+  min_vel_th: 0.0
+  max_acceleration: 2.0
+  max_translational_acceleration: 2.0
+  max_rotational_acceleration: 1.0
+
+  rotation_correction_threshold: 0.5
+  differential_drive: False
+
+  #PID
+  k_prop: 10.0 # the higher it is the higher velocities robot can achieve
+  k_damp: 5.0
