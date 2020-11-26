@@ -55,4 +55,4 @@ Edit map
 add names to WEMapEditor.ini
 ./we_map_editor
 ```
-load a .map file, than can edit the map, it will generate a txt file finally.
+load a .map file, edit the map, generate a txt file finally.
