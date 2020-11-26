@@ -41,3 +41,18 @@ Run the demo:
 ```
 rosrun planner_example planner.py
 ```
+
+# Edit map
+Generate map file
+```
+cd kejia_simulator/kejia_mapping/map
+./pgm2map pgmfile mapfile
+example: ./pgm2map gpsr gpsr.map
+```
+
+Edit map
+```
+add names to WEMapEditor.ini
+./we_map_editor
+```
+load a .map file, than can edit the map, it will generate a txt file finally.
